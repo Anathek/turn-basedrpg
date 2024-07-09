@@ -1,10 +1,14 @@
-[gd_scene load_steps=6 format=3 uid="uid://dekehl2d7yen1"]
+[gd_scene load_steps=10 format=3 uid="uid://dekehl2d7yen1"]
 
 [ext_resource type="Script" path="res://TurnManager.gd" id="1_n7jli"]
 [ext_resource type="PackedScene" uid="uid://dx5fb2facemoi" path="res://Character.tscn" id="1_raqbx"]
 [ext_resource type="Texture2D" uid="uid://b1pfberekshm5" path="res://Sprites/Dragon.png" id="1_rk6ju"]
 [ext_resource type="Script" path="res://Character.gd" id="2_yah4n"]
+[ext_resource type="Resource" uid="uid://dnu3oyx55flsj" path="res://Combat Actions/Slash.tres" id="4_ma57a"]
 [ext_resource type="Texture2D" uid="uid://d2gvhhgyfral1" path="res://Sprites/Reptile.png" id="4_mj54t"]
+[ext_resource type="Resource" uid="uid://hymk18oh2yij" path="res://Combat Actions/Heal.tres" id="5_ibhfs"]
+[ext_resource type="Resource" uid="uid://cyx60q5l6m6bl" path="res://Combat Actions/Stomp.tres" id="6_gxhmw"]
+[ext_resource type="Script" path="res://CombatActionButton.gd" id="9_vwkt8"]
 
 [node name="BattleScene" type="Node2D"]
 script = ExtResource("1_n7jli")
@@ -13,13 +17,28 @@ script = ExtResource("1_n7jli")
 position = Vector2(-234, -6)
 script = ExtResource("2_yah4n")
 is_player = true
+combat_actions = [ExtResource("4_ma57a"), ExtResource("5_ibhfs"), ExtResource("6_gxhmw")]
 visual = ExtResource("1_rk6ju")
 
 [node name="Enemy" parent="." instance=ExtResource("1_raqbx")]
 position = Vector2(218, 1)
 script = ExtResource("2_yah4n")
+combat_actions = [ExtResource("4_ma57a"), ExtResource("5_ibhfs")]
 visual = ExtResource("4_mj54t")
 flip_visual = true
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(1.5, 1.5)
+
+[node name="PlayerCombatActionsUI" type="VBoxContainer" parent="."]
+offset_left = -299.0
+offset_top = 105.0
+offset_right = -169.0
+offset_bottom = 194.0
+
+[node name="Button" type="Button" parent="PlayerCombatActionsUI"]
+layout_mode = 2
+text = "Slash (5 DMG)"
+script = ExtResource("9_vwkt8")
+
+[connection signal="pressed" from="PlayerCombatActionsUI/Button" to="PlayerCombatActionsUI/Button" method="_on_pressed"]

@@ -6,7 +6,7 @@ class_name Character
 @export var max_hp : int = 25
 
 
-@export var combat_action : Array
+@export var combat_actions : Array
 @export var opponent : Node
 
 
@@ -47,4 +47,7 @@ func _update_health_bar():
 	health_text.text = str(max_hp," / ",cur_hp)
 	
 func _on_character_begin_turn(character):
+	pass
+	
+func cast_combat_action(action):
 	pass

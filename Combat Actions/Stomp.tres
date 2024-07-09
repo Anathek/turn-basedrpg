@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_icr26")
-display_name = "Action (x DMG)"
-damage = 0
+display_name = "Stomp (8 DMG)"
+damage = 8
 heal = 0

@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_ugjro")
-display_name = "Action (x DMG)"
+display_name = "Heal (5 HP)"
 damage = 0
-heal = 0
+heal = 5

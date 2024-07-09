@@ -4,6 +4,6 @@
 
 [resource]
 script = ExtResource("1_3ft88")
-display_name = "Action (x DMG)"
-damage = 0
+display_name = "Slash (5 DMG)"
+damage = 5
 heal = 0
