@@ -2,7 +2,7 @@ extends Node
 
 @export var player_char : Node
 @export var enemy_char : Node
-var cur_char : Node
+var cur_char : Character
 
 @export var next_turn_delay : float = 1.0
 
@@ -19,7 +19,7 @@ func begin_next_turn():
 	if cur_char == player_char:
 		cur_char = enemy_char
 	elif cur_char == enemy_char:
-		cur_char = enemy_char
+		cur_char = player_char
 	else:
 		cur_char = player_char
 		
@@ -27,7 +27,6 @@ func begin_next_turn():
 	
 func end_current_turn():
 	emit_signal("character_end_turn", cur_char)
-	
 	
 	await get_tree().create_timer(next_turn_delay).timeout
 	if game_over == false:
